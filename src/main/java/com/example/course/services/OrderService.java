@@ -21,7 +21,6 @@ public class OrderService {
     public Order findById(Long id){
         Optional<Order> obj = repository.findById(id);
 
-        //retorna o user dentro do optional
         return obj.get();
     }
 }
