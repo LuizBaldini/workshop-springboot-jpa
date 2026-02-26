@@ -3,6 +3,7 @@ package com.example.course.entities;
 import com.example.course.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import org.jspecify.annotations.NonNull;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -95,5 +96,12 @@ public class Order implements Serializable {
     }
     public Set<OrderItem> getItems(){
         return items;
+    }
+    public Double getTotal(){
+        double sum = 0.0;
+        for(OrderItem x : items){
+            sum += x.getSubTotal();
+        }
+        return sum;
     }
 }
